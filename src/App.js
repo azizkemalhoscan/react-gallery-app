@@ -24,18 +24,18 @@ class App extends Component {
       cards: []
     }
   }
-componentDidMount() {
-  fetch('https://https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=sunsets&per_page=24&format=json&nojsoncallback=1.flickr.com/services')
-    .then( response => response.json())
-    .then( responseData => {
-      this.setState({
-        cards: responseData.photos
+  componentDidMount() {
+    fetch('https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=sunsets&per_page=24&format=json&nojsoncallback=1/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=sunsets&per_page=24&format=json&nojsoncallback=1')
+      .then( response => response.json())
+      .then( responseData => {
+        this.setState({
+          cards: responseData.photos
+        });
+      })
+      .catch(error => {
+        console.log('error fetching', error);
       });
-    })
-    .catch(error => {
-      console.log('error fetching', error);
-    });
-}
+  }
 
   render(){
     console.log(this.state.cards)
