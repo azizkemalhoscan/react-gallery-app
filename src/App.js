@@ -1,25 +1,32 @@
 import React from 'react';
 import logo from './logo.svg';
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom';
 import './App.css';
+import Nav from './components/Nav';
+import Photo from './components/Photo';
+import SearchForm from './components/SearchForm';
+import apiKey from './components/config.js';
 
-function App() {
+// import NotFound from 'Notfound'; Not sure if this should be in Photos or not
+
+// App components go here!
+
+const fetchApi = <apiKey />;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+       <div className="App">
+          <h1>Aziz I am APP </h1>      
+       </div>   
+       <SearchForm />
+       <Nav /> 
+       <Photo />
+    </BrowserRouter>
   );
 }
 
