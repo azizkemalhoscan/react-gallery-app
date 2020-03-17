@@ -1,22 +1,20 @@
 import React from 'react';
 import {
-  BrowserRouter,
-  Route,
-  Switch
+  Link,
+  NavLink,
+  Route
 } from 'react-router-dom';
 
 const Nav = () => {
   return (
-    <BrowserRouter>
-      <nav class="main-nav">
+      <nav className="main-nav">
           <ul>
-            <li><a href='#'>Cats</a></li>
-            <li><a href='#'>Dogs</a></li>
-            <li><a href='#'>Computers</a></li>
-            <li><a href='#'>Test</a></li>
+            <li><NavLink exact to='/'>Cats</NavLink></li>
+            <li><NavLink to='/'>Dogs</NavLink></li>
+            <li><NavLink to='/'>Computers</NavLink></li>
+            <li><NavLink to='/'>Test</NavLink></li>
           </ul>
       </nav>
-    </BrowserRouter>
   );
 }
 

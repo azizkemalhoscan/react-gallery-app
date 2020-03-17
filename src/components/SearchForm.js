@@ -6,7 +6,7 @@ class SearchForm extends Component {
     }
     render() {
         return(
-            <form class="search-form">
+            <form className="search-form">
                 <input type="search" name="search" placeholder="Search" required/>
                 {/* Changed class to className */}
                 <button type="submit" className="search-button">

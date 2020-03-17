@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import {
   BrowserRouter,
@@ -17,17 +17,39 @@ import apiKey from './components/config.js';
 
 const fetchApi = <apiKey />;
 
-const App = () => {
-  return (
-    <BrowserRouter>
-       <div className="App">
-          <h1>Aziz I am APP </h1>      
-       </div>   
-       <SearchForm />
-       <Nav /> 
-       <Photo />
-    </BrowserRouter>
-  );
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      cards: []
+    }
+  }
+componentDidMount() {
+  fetch('https://https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=sunsets&per_page=24&format=json&nojsoncallback=1.flickr.com/services')
+    .then( response => response.json())
+    .then( responseData => {
+      this.setState({
+        cards: responseData.photos
+      });
+    })
+    .catch(error => {
+      console.log('error fetching', error);
+    });
+}
+
+  render(){
+    console.log(this.state.cards)
+    return (
+      <BrowserRouter>
+        <div className="App">
+            <h1>Aziz I am APP </h1>    
+            <Route path='/' component={SearchForm} />  
+            <Route path='/' component={Nav} />
+        </div>   
+        {/* <Photo /> */}
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
