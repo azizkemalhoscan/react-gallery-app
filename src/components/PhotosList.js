@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import Photo from './Photo';
 
 const PhotosList = props => {
-
-    const results = props.data
-    let photos = results.map(photo =>
-        <Photo data={photo}/>
-    );
+    console.log(props.data.photo)
+    let result = props.data;
+    let gallery = [];
+    // for(let i=0; i < 24; i++){
+    //     gallery.push(
+    //     <Photo 
+    //         key={props.data.photo[i].id}
+    //     />)
+    // }
     return (
         <div className="photo-container">
             <h2>Results</h2>
             <ul>
-                <Photo />
+               
             </ul>
         </div>
     );

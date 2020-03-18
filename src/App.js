@@ -30,7 +30,7 @@ class App extends Component {
       .then( response => response.json())
       .then( responseData => {
         this.setState({
-          cards: responseData.photos.photo
+          cards: responseData.photos
         });
       })
       .catch(error => {
