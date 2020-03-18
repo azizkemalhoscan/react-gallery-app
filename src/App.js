@@ -10,6 +10,7 @@ import Nav from './components/Nav';
 import Photo from './components/Photo';
 import SearchForm from './components/SearchForm';
 import apiKey from './components/config.js';
+import PhotosList from './components/PhotosList';
 
 // import NotFound from 'Notfound'; Not sure if this should be in Photos or not
 
@@ -29,7 +30,7 @@ class App extends Component {
       .then( response => response.json())
       .then( responseData => {
         this.setState({
-          cards: responseData.photos
+          cards: responseData.photos.photo
         });
       })
       .catch(error => {
@@ -45,6 +46,7 @@ class App extends Component {
             <h1>Aziz I am APP </h1>    
             <Route path='/' component={SearchForm} />  
             <Route path='/' component={Nav} />
+            <PhotosList data={this.state.cards} />
         </div>   
         {/* <Photo /> */}
       </BrowserRouter>
