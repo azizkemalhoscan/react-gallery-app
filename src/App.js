@@ -4,52 +4,49 @@ import logo from './logo.svg';
 import {
   BrowserRouter,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
-import './App.css';
-import Nav from './components/Nav';
-import Photo from './components/Photo';
-import SearchForm from './components/SearchForm';
-import apiKey from './components/config.js';
-import PhotosList from './components/PhotosList';
 
-// import NotFound from 'Notfound'; Not sure if this should be in Photos or not
+// App components go here!
+import './App.css';
+import NavigationComponent from './components/NavigationComponent';
+import SearchForm from './components/SearchForm';
+import PhotosList from './components/PhotosList';
+import NotFound from './components/NotFound';
+
 
 // App components go here!
 
-const fetchApi = <apiKey />;
 
-class App extends Component {
-    // state = {
-    //   cards: []
-    // }
-
-  // componentDidMount() {
-  //   fetch('https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=sunsets&per_page=24&format=json&nojsoncallback=1/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=sunsets&per_page=24&format=json&nojsoncallback=1')
-  //     .then( response => response.json())
-  //     .then( responseData => {
-  //       this.setState({
-  //         cards: responseData.photos
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log('error fetching', error);
-  //     });
-  // }
-
-  render(){
-    // console.log(this.state.cards)
+const App = () => {
     return (
-      <Consumer>
-           <div className="App">
-              <h1>Aziz I am APP </h1>    
-              <Route path='/' component={SearchForm} />  
-              <Route path='/' component={Nav} />
-              {/* <PhotosList data={this.state.cards} /> */}
-          </div>        
-      </Consumer>  
+      <Provider>
+        <BrowserRouter>
+            <div className="App">
+            <SearchForm />
+            <NavigationComponent />
+            <Switch>
+              <Route exact path="/" render={ () => <Redirect to='/cats' />} />   
+              <Route path="/cats" render={ () => <PhotosList tag='cats' />} />
+              <Route path="/dogs" render={ () => <PhotosList tag='dogs' />} />
+              <Route path="/monkeys" render={ () => <PhotosList tag='monkeys' />} /> 
+              <Route component={NotFound}  />            
+            </Switch>       
+            <PhotosList />
+                <h1>Aziz I am APP </h1>    
+            </div>  
+        </BrowserRouter> 
+      </Provider>     
     );
-  }
 }
 
 export default App;
+
+
+
+/* 
+THIS IS GENERAL GUIDE REGARDING MOCKUPS.
+This is the main app 
+You should include all components here in the relevant order.
+*/

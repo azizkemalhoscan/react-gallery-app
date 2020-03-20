@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+// import ApiKey from '/sr/components/config.js';
 
 const contextGallery = React.createContext();
+// const fetchApi = <ApiKey />;
 
 export class Provider extends Component {
     state = {
         cards: []
     }
-
+    // fa4a57776ea659f17683daa008a99003
     componentDidMount() {
-        fetch('https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=sunsets&per_page=24&format=json&nojsoncallback=1/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=sunsets&per_page=24&format=json&nojsoncallback=1')
+        fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=sunsets&per_page=24&format=json&nojsoncallback=1/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=sunsets&per_page=24&format=json&nojsoncallback=1`)
           .then( response => response.json())
           .then( responseData => {
             this.setState({
@@ -21,6 +23,7 @@ export class Provider extends Component {
       }
 
     render()  {
+        console.log(this.state.cards.photo)
         return(
             <contextGallery.Provider value={this.state.cards} >
               <div className="App">
@@ -33,3 +36,8 @@ export class Provider extends Component {
 
 
 export const Consumer = contextGallery.Consumer;
+
+/* 
+THIS IS GENERAL GUIDE REGARDING MOCKUPS.
+
+*/

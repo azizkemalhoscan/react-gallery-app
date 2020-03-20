@@ -1,5 +1,6 @@
 // Photo.js
 import React from 'react';
+import NotFound from './NotFound';
 // import NotFound from './NotFound';
 
 
@@ -7,6 +8,7 @@ import React from 'react';
 
 const Photo = props => {
     return (
+        
         <li>
             <img src={props.photo} alt="" />
         </li>
@@ -15,3 +17,10 @@ const Photo = props => {
 }
 
 export default Photo;
+
+/* 
+THIS IS GENERAL GUIDE REGARDING MOCKUPS.
+          <li>
+            <img src="https://farm5.staticflickr.com/4334/37032996241_4c16a9b530.jpg" alt="" />
+          </li>
+*/
