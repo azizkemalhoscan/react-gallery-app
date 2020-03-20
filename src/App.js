@@ -21,8 +21,12 @@ import NotFound from './components/NotFound';
 
 const App = () => {
     return (
-      <Provider>
-        <BrowserRouter>
+      <Consumer>
+        { context => {
+          const logout = context
+          console.log(logout)
+          return(
+            <BrowserRouter>
             <div className="App">
             <SearchForm />
             <NavigationComponent />
@@ -31,13 +35,16 @@ const App = () => {
               <Route path="/cats" render={ () => <PhotosList tag='cats' />} />
               <Route path="/dogs" render={ () => <PhotosList tag='dogs' />} />
               <Route path="/monkeys" render={ () => <PhotosList tag='monkeys' />} /> 
-              <Route component={NotFound}  />            
+              <Route component={NotFound} />            
             </Switch>       
             <PhotosList />
                 <h1>Aziz I am APP </h1>    
             </div>  
-        </BrowserRouter> 
-      </Provider>     
+        </BrowserRouter>   
+          );
+        }}
+      </Consumer>
+ 
     );
 }
 

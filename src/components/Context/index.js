@@ -25,7 +25,8 @@ export class Provider extends Component {
     render()  {
         console.log(this.state.cards.photo)
         return(
-            <contextGallery.Provider value={this.state.cards} >
+            <contextGallery.Provider value={{
+                images: this.state.cards }} >
               <div className="App">
                   <h1>Aziz I am APP </h1>    
               </div>   

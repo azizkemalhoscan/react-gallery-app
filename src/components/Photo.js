@@ -1,18 +1,14 @@
 // Photo.js
 import React from 'react';
-import NotFound from './NotFound';
-// import NotFound from './NotFound';
 
 
 // Here use class
 
 const Photo = props => {
-    return (
-        
+    return (      
         <li>
             <img src={props.photo} alt="" />
         </li>
-
     );
 }
 
