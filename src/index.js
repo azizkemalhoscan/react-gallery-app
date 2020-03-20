@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from './components/Context';
 
-ReactDOM.render(<App />, 
+ReactDOM.render(
+    <Provider>
+        <App />
+    </Provider>, 
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

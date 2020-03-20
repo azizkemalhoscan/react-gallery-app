@@ -21,11 +21,6 @@ import NotFound from './components/NotFound';
 
 const App = () => {
     return (
-      <Consumer>
-        { context => {
-          const logout = context
-          console.log(logout)
-          return(
             <BrowserRouter>
             <div className="App">
             <SearchForm />
@@ -42,10 +37,6 @@ const App = () => {
             </div>  
         </BrowserRouter>   
           );
-        }}
-      </Consumer>
- 
-    );
 }
 
 export default App;

@@ -1,14 +1,22 @@
 // Photo.js
 import React from 'react';
-
+import { Consumer } from './Context';
 
 // Here use class
 
 const Photo = props => {
-    return (      
-        <li>
-            <img src={props.photo} alt="" />
-        </li>
+
+    return (    
+        <Consumer>
+        { context => {
+            console.log(context.images.photo)
+            return(
+                <li>
+                    <img src={props.photo} alt="" />
+                </li>
+            );
+        }}
+        </Consumer>  
     );
 }
 
