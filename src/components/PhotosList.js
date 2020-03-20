@@ -7,7 +7,8 @@ const PhotosList = () => {
         <Consumer>
             { context => {
                 console.log(context.images.photo)
-                context.images.photo.map(item => 
+                let gifs = context.images.photo
+                gifs.map(item => 
                     <Photo
                         key={item.id}
                         owned={item.owner}
@@ -19,7 +20,7 @@ const PhotosList = () => {
                     <div class="photo-container">
                         <h2>Results</h2>
                         <ul>
-                            <Photo />
+                            {gifs}
                         </ul> 
                     </div>
                 );

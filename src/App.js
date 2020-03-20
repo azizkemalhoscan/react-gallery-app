@@ -14,6 +14,7 @@ import NavigationComponent from './components/NavigationComponent';
 import SearchForm from './components/SearchForm';
 import PhotosList from './components/PhotosList';
 import NotFound from './components/NotFound';
+import Photo from './components/Photo';
 
 
 // App components go here!
@@ -24,6 +25,7 @@ const App = () => {
             <BrowserRouter>
             <div className="App">
             <SearchForm />
+            <Photo />
             <NavigationComponent />
             <Switch>
               <Route exact path="/" render={ () => <Redirect to='/cats' />} />   
