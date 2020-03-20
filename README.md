@@ -1,3 +1,13 @@
+
+In this project I am creating a gallery-app using react. 
+Project will help me understand the basics of React like Routing, Context API and so on...
+I am going to create an application by using Flciker.com. In order to use flicker data should be fetched. Data is going to get fetched by api request 
+which is already built in JavaScript.
+
+For privacy reasons, I have included config.js in gitignore files. You can create a config.js file and place it into components folder.
+
+I wish myself the best luck with this project. :) 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
