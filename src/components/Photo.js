@@ -12,7 +12,7 @@ const Photo = props => {
             console.log(context.images.photo)
             return(
                 <li>
-                    <img src={props.photo} alt="" />
+                    <img src={`https://farm${props.farmnumber}.staticflickr.com/4334/${props.id}_${props.secretas}.jpg`} alt="" />
                 </li>
             );
         }}

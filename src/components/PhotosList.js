@@ -1,20 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Photo from './Photo';
+import { Consumer } from './Context';
 
-class PhotosList extends Component {
-    state ={
-        photo: []
-    }
-    render(){
-        return(
-            <div class="photo-container">
-                <h2>Results</h2>
-                <ul>
-                    <Photo />
-                </ul> 
-            </div>
-        );
-    }
+const PhotosList = () => {
+    return(
+        <Consumer>
+            { context => {
+                console.log(context.images.photo)
+                context.images.photo.map(item => 
+                    <Photo
+                        key={item.id}
+                        owned={item.owner}
+                        secretas={item.secret}
+                        farmnumber={item.farm}
+                     />
+                 );
+                return(
+                    <div class="photo-container">
+                        <h2>Results</h2>
+                        <ul>
+                            <Photo />
+                        </ul> 
+                    </div>
+                );
+            }}
+        </Consumer>
+    );
+
 }
 
 export default PhotosList;
