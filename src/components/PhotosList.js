@@ -11,6 +11,7 @@ const PhotosList = (props) => {
         farmnumber={item.farm}
         id={item.id}
         secretas={item.secret}
+        key={item.id}
       />
       );
   } else {
