@@ -2,10 +2,14 @@ import React from 'react';
 import Photo from './Photo';
 import NotFound from './NotFound';
 
+
+// Item s key prop set to its own id
+// mapped results and passed their relevant data to Photo component
 const PhotosList = (props) => {
-  let items;
+  console.log(props.title)
   const results = props.data
-  if(results.length >= 0){
+  let items;
+  if(results.length > 0){
     items = results.map(item => 
       <Photo 
         farmnumber={item.farm}
@@ -18,9 +22,13 @@ const PhotosList = (props) => {
     items = <NotFound />
   }
   return(
+      <div className='photo-container'>
+        <h1>{props.title} gallery</h1>
           <ul>
             {items}
           </ul>
+      </div>
+
   );
 }
 

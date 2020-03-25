@@ -31,7 +31,7 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    this.performSearch();
+    this.performSearch('cats');
   }
 
   performSearch = ( query ) => {
@@ -54,16 +54,15 @@ class App extends Component {
 
     return(
       <BrowserRouter>
-      <div className="App">
+      <div className="container">
       <SearchForm  onSearch={this.performSearch}/>
         <NavigationComponent clickevent={this.performSearch}/>
           <Switch>
             <Route exact path="/" render={ () => <Redirect to='/cats' data={this.state.cards} />} />   
-            <Route path="/cats" render={ () => <PhotosList  data={this.state.cards} />} />
-            <Route path="/dogs" render={ () => <PhotosList  data={this.state.cards} />} />
-            <Route path="/lakes" render={ () => <PhotosList data={this.state.cards} />} /> 
+            <Route path="/cats" render={ () => <PhotosList  data={this.state.cards} title='cats' />} />
+            <Route path="/dogs" render={ () => <PhotosList  data={this.state.cards} title='dogs' />} />
+            <Route path="/lakes" render={ () => <PhotosList data={this.state.cards} title='lakes' />} /> 
           </Switch>       
-          <h1>Aziz I am APP </h1>    
       </div>  
   </BrowserRouter>       
     );
