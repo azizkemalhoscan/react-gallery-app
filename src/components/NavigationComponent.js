@@ -1,23 +1,18 @@
 import React from 'react';
 import {
   BrowserRouter,
-  Route,
-  Switch
-} from 'react-router-dom';
-import {
-  Link,
   NavLink,
 } from 'react-router-dom';
-import PhotosList from './PhotosList';
 
-const NavigationComponent = () => {
+
+const NavigationComponent = (props) => {
   return (
     <BrowserRouter>
        <nav className="main-nav">
           <ul>
-            <li><NavLink to='/cats'>Cats</NavLink></li>
-            <li><NavLink to='/dogs'>Dogs</NavLink></li>
-            <li><NavLink to='/Monkeys'>Monkeys</NavLink></li>
+            <li><NavLink to='/cats' onClick={() => props.clickevent('cats')}>Cats</NavLink></li>
+            <li><NavLink to='/dogs' onClick={() => props.clickevent('dogs')}>Dogs</NavLink></li>
+            <li><NavLink to='/lakes' onClick={() => props.clickevent('lakes')}>Lakes</NavLink></li>
           </ul>
       </nav>    
     </BrowserRouter>

@@ -3,14 +3,19 @@ import Photo from './Photo';
 import NotFound from './NotFound';
 
 const PhotosList = (props) => {
+  let items;
   const results = props.data
-  let items = results.map(item => 
-    <Photo 
-      farmnumber={item.farm}
-      id={item.id}
-      secretas={item.secret}
-    />
-    );
+  if(results.length >= 0){
+    items = results.map(item => 
+      <Photo 
+        farmnumber={item.farm}
+        id={item.id}
+        secretas={item.secret}
+      />
+      );
+  } else {
+    items = <NotFound />
+  }
   return(
           <ul>
             {items}

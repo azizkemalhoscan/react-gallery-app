@@ -15,28 +15,34 @@ import PhotosList from './components/PhotosList';
 import NotFound from './components/NotFound';
 import Photo from './components/Photo';
 
+//  imported config files variable for a hidden apikey
+import apiKey from './components/Config';
 
 // App components go here!
 
 
 class App extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       cards: [],
-      tag: ""
+      tag: "",
+      isLoading: true
     }
   }
   componentDidMount() {
     this.performSearch();
   }
 
-  performSearch = ( query = 'elephants') => {
-    fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=fa4a57776ea659f17683daa008a99003&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+  performSearch = ( query ) => {
+
+    fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then( response => response.json())
     .then( responseData => {
       this.setState({
-        cards: responseData.photos.photo
+        cards: responseData.photos.photo,
+        tag: query,
+        isLoading: false
       });
     })
     .catch(error => {
@@ -50,14 +56,13 @@ class App extends Component {
       <BrowserRouter>
       <div className="App">
       <SearchForm  onSearch={this.performSearch}/>
-      <NavigationComponent />
-      <Switch>
-        <Route exact path="/" render={ () => <Redirect to='/cats' data={this.state.cards} />} />   
-        <Route path="/cats" render={ () => <PhotosList  data={this.state.cards} />} />
-        <Route path="/dogs" render={ () => <PhotosList  data={this.state.cards}  />} />
-        <Route path="/monkeys" render={ () => <PhotosList data={this.state.cards} />} /> 
-        <Route component={NotFound} />             */
-      </Switch>       
+        <NavigationComponent clickevent={this.performSearch}/>
+          <Switch>
+            <Route exact path="/" render={ () => <Redirect to='/cats' data={this.state.cards} />} />   
+            <Route path="/cats" render={ () => <PhotosList  data={this.state.cards} />} />
+            <Route path="/dogs" render={ () => <PhotosList  data={this.state.cards} />} />
+            <Route path="/lakes" render={ () => <PhotosList data={this.state.cards} />} /> 
+          </Switch>       
           <h1>Aziz I am APP </h1>    
       </div>  
   </BrowserRouter>       
