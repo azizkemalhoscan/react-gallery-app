@@ -1,33 +1,21 @@
 import React from 'react';
 import Photo from './Photo';
-import { Consumer } from './Context';
+import NotFound from './NotFound';
 
-const PhotosList = () => {
-    return(
-        <Consumer>
-            { context => {
-                console.log(context.images.photo)
-                let gifs = context.images.photo
-                gifs.map(item => 
-                    <Photo
-                        key={item.id}
-                        owned={item.owner}
-                        secretas={item.secret}
-                        farmnumber={item.farm}
-                     />
-                 );
-                return(
-                    <div class="photo-container">
-                        <h2>Results</h2>
-                        <ul>
-                            {gifs}
-                        </ul> 
-                    </div>
-                );
-            }}
-        </Consumer>
+const PhotosList = (props) => {
+  const results = props.data
+  let items = results.map(item => 
+    <Photo 
+      farmnumber={item.farm}
+      id={item.id}
+      secretas={item.secret}
+    />
     );
-
+  return(
+          <ul>
+            {items}
+          </ul>
+  );
 }
 
 export default PhotosList;
