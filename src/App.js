@@ -12,8 +12,6 @@ import './App.css';
 import NavigationComponent from './components/NavigationComponent';
 import SearchForm from './components/SearchForm';
 import PhotosList from './components/PhotosList';
-import NotFound from './components/NotFound';
-import Photo from './components/Photo';
 
 //  imported config files variable for a hidden apikey
 import apiKey from './components/Config';
@@ -31,10 +29,10 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    this.performSearch('cats');
+    this.performSearch();
   }
 
-  performSearch = ( query ) => {
+  performSearch = ( query = 'cats' ) => {
 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then( response => response.json())
@@ -42,7 +40,8 @@ class App extends Component {
       this.setState({
         cards: responseData.photos.photo,
         tag: query,
-        isLoading: false
+        isLoading: false,
+        titles: `${query} gallery`
       });
     })
     .catch(error => {
@@ -59,9 +58,9 @@ class App extends Component {
         <NavigationComponent clickevent={this.performSearch}/>
           <Switch>
             <Route exact path="/" render={ () => <Redirect to='/cats' data={this.state.cards} />} />   
-            <Route path="/cats" render={ () => <PhotosList  data={this.state.cards} title='cats' />} />
-            <Route path="/dogs" render={ () => <PhotosList  data={this.state.cards} title='dogs' />} />
-            <Route path="/lakes" render={ () => <PhotosList data={this.state.cards} title='lakes' />} /> 
+            <Route path="/cats" render={ () => <PhotosList  data={this.state.cards} title={this.state.titles} />} />
+            <Route path="/dogs" render={ () => <PhotosList  data={this.state.cards} title={this.state.titles}  />} />
+            <Route path="/lakes" render={ () => <PhotosList data={this.state.cards} title={this.state.titles}  />} /> 
           </Switch>       
       </div>  
   </BrowserRouter>       

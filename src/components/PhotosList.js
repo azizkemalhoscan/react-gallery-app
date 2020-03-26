@@ -6,7 +6,8 @@ import NotFound from './NotFound';
 // Item s key prop set to its own id
 // mapped results and passed their relevant data to Photo component
 const PhotosList = (props) => {
-  console.log(props.title)
+
+
   const results = props.data
   let items;
   if(results.length > 0){
@@ -23,7 +24,7 @@ const PhotosList = (props) => {
   }
   return(
       <div className='photo-container'>
-        <h1>{props.title} gallery</h1>
+        <h1>{props.title}</h1>
           <ul>
             {items}
           </ul>
