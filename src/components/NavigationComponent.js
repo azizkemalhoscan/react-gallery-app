@@ -5,14 +5,14 @@ import {
 } from 'react-router-dom';
 
 
-const NavigationComponent = (props) => {
+const NavigationComponent = () => {
   return (
     <BrowserRouter>
        <nav className="main-nav">
           <ul>
-            <li><NavLink to='/cats' onClick={() => props.clickevent('cats')}>Cats</NavLink></li>
-            <li><NavLink to='/dogs' onClick={() => props.clickevent('dogs')}>Dogs</NavLink></li>
-            <li><NavLink to='/lakes' onClick={() => props.clickevent('lakes')}>Lakes</NavLink></li>
+            <li><NavLink exact to='/cats' >Cats</NavLink></li>
+            <li><NavLink exact to='/dogs' >Dogs</NavLink></li>
+            <li><NavLink exact to='/lakes' >Lakes</NavLink></li>
           </ul>
       </nav>    
     </BrowserRouter>

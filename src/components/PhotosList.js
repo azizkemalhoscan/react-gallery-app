@@ -7,7 +7,7 @@ import NotFound from './NotFound';
 // mapped results and passed their relevant data to Photo component
 const PhotosList = (props) => {
 
-
+  console.log(props.data)
   const results = props.data
   let items;
   if(results.length > 0){
