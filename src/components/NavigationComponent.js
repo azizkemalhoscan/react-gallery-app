@@ -6,7 +6,6 @@ import {
 
 
 const NavigationComponent = (props) => {
-  console.log(props)
   return (
     <BrowserRouter>
        <nav className="main-nav">
