@@ -106,13 +106,13 @@ class App extends Component {
       <BrowserRouter>
       <div className="container">
       <SearchForm  onSearch={this.performSearch}/>
-        <NavigationComponent />
+        <NavigationComponent searchingCats={this.performSearchForCats} searchingDogs={this.performSearchForDogs} searchingLakes={this.performSearchForLakes}/>
         <Switch>
             <Route exact path="/" render={ () => <Redirect to='/cats'  />} />   
             <Route exact path="/cats" render={ () => <PhotosList  data={this.state.cats} title={this.state.titleCat}  />} />
             <Route exact path="/dogs" render={ () => <PhotosList  data={this.state.dogs} title={this.state.titleDog}  />} />
             <Route exact path="/lakes" render={ () => <PhotosList data={this.state.lakes} title={this.state.titleLake}  />} />
-            <Route exact path={`/${this.state.tag}`} render={ () => <PhotosList data={this.state.cards} title={this.state.tag}  />} />
+            <Route exact path="/:query" render={ () => <PhotosList data={this.state.cards} title={this.state.tag}  />} />
         </Switch>    
       </div>  
   </BrowserRouter>       

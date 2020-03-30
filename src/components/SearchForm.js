@@ -12,10 +12,10 @@ class SearchForm extends Component {
     handleSubmit = e => {
       e.preventDefault();
       this.props.onSearch(this.query.value);
-      e.currentTarget.reset();
+      // e.currentTarget.reset();
     }
-
     render() {
+      console.log(this.searchText)
         return(
             <form className="search-form" onSubmit={this.handleSubmit}>
                 <input type="search" 

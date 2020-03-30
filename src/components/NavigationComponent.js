@@ -1,18 +1,19 @@
 import React from 'react';
 import {
   BrowserRouter,
-  NavLink,
+  NavLink
 } from 'react-router-dom';
 
 
-const NavigationComponent = () => {
+const NavigationComponent = (props) => {
+  console.log(props)
   return (
     <BrowserRouter>
        <nav className="main-nav">
           <ul>
-            <li><NavLink exact to='/cats' >Cats</NavLink></li>
-            <li><NavLink exact to='/dogs' >Dogs</NavLink></li>
-            <li><NavLink exact to='/lakes' >Lakes</NavLink></li>
+            <li><NavLink to='/cats' >Cats</NavLink></li>
+            <li><NavLink to='/dogs' >Dogs</NavLink></li>
+            <li><NavLink to='/lakes' >Lakes</NavLink></li>
           </ul>
       </nav>    
     </BrowserRouter>
