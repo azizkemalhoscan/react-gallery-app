@@ -1,13 +1,10 @@
 import React from 'react';
 import {
-  BrowserRouter,
   NavLink
 } from 'react-router-dom';
 
-
 const NavigationComponent = (props) => {
   return (
-    <BrowserRouter>
        <nav className="main-nav">
           <ul>
             <li><NavLink to='/cats' >Cats</NavLink></li>
@@ -15,7 +12,6 @@ const NavigationComponent = (props) => {
             <li><NavLink to='/lakes' >Lakes</NavLink></li>
           </ul>
       </nav>    
-    </BrowserRouter>
   );
 }
 
