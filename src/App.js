@@ -27,7 +27,8 @@ class App extends Component {
       dogs: [],
       lakes: [],
       tag: "",
-      isLoading: true
+      isLoading: true,
+      path: ''
     }
   }
   componentDidMount() {
@@ -37,7 +38,7 @@ class App extends Component {
 
   }
 
-  performSearch = ( query  ) => {
+  performSearch = ( query ) => {
 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
     .then( response => response.json())
@@ -105,16 +106,19 @@ class App extends Component {
     return(
       <BrowserRouter>
       <div className="container">
-      <SearchForm  onSearch={this.performSearch}/>
-        <NavigationComponent searchingCats={this.performSearchForCats} searchingDogs={this.performSearchForDogs} searchingLakes={this.performSearchForLakes}/>
+      <SearchForm  onSearch={this.performSearch} />
+        <NavigationComponent />
            <Switch>
               <Route exact path="/" render={ () => <Redirect to='/cats'  />} />   
-              <Route path="/cats" render={ () => <PhotosList  data={this.state.cats} title={this.state.titleCat}  />} />
-              <Route path="/dogs" render={ () => <PhotosList  data={this.state.dogs} title={this.state.titleDog}  />} />
-              <Route path="/lakes" render={ () => <PhotosList data={this.state.lakes} title={this.state.titleLake}  />} />
-              <Route path="/:query" render={ () => <PhotosList data={this.state.cards} title={this.state.tag}  />} />
+              <Route exact path="/cats" render={ () => <PhotosList  data={this.state.cats} title={this.state.titleCat} loading={this.state.isLoading} />} />
+              <Route exact path="/dogs" render={ () => <PhotosList  data={this.state.dogs} title={this.state.titleDog} loading={this.state.isLoading} />} />
+              <Route exact path="/lakes" render={ () => <PhotosList data={this.state.lakes} title={this.state.titleLake} loading={this.state.isLoading} />} />
+              <Route exact path="/:query" render={ () => <PhotosList data={this.state.cards} title={this.state.titles} loading={this.state.isLoading} />} />
            </Switch>
       </div>  
+      {(this.state.isLoading) ? 
+        <p>Nothing</p> : <PhotosList data={this.state.cards} title={this.state.titles} loading={this.state.isLoading} />
+      }
       </BrowserRouter>      
     );
   }
