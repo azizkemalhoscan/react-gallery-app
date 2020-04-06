@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { withRouter } from 'react-router-dom';
 class SearchForm extends Component {
     state = {
         searchText: ''
@@ -11,8 +11,8 @@ class SearchForm extends Component {
 
     handleSubmit = e => {
       e.preventDefault();
-      console.log(this.props.history)
       this.props.onSearch(this.query.value);
+      this.props.history.push(`/search/${this.state.searchText}`);
       e.currentTarget.reset();
     }
     render() {
@@ -37,7 +37,7 @@ class SearchForm extends Component {
 }
 
 
-export default SearchForm;
+export default withRouter(SearchForm);
 
 /* 
 THIS IS GENERAL GUIDE REGARDING MOCKUPS.

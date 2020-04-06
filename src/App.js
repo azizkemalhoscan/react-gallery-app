@@ -113,12 +113,11 @@ class App extends Component {
               <Route exact path="/cats" render={ () => <PhotosList  data={this.state.cats} title={this.state.titleCat} loading={this.state.isLoading} />} />
               <Route exact path="/dogs" render={ () => <PhotosList  data={this.state.dogs} title={this.state.titleDog} loading={this.state.isLoading} />} />
               <Route exact path="/lakes" render={ () => <PhotosList data={this.state.lakes} title={this.state.titleLake} loading={this.state.isLoading} />} />
-              <Route exact path="/:query" render={ () => <PhotosList data={this.state.cards} title={this.state.titles} loading={this.state.isLoading} />} />
+              <Route path="/search" render={ () => (this.state.isLoading) ? 
+        <p>Nothing</p> : <PhotosList data={this.state.cards} title={this.state.titles} loading={this.state.isLoading} />
+      } />
            </Switch>
       </div>  
-      {(this.state.isLoading) ? 
-        <p>Nothing</p> : <PhotosList data={this.state.cards} title={this.state.titles} loading={this.state.isLoading} />
-      }
       </BrowserRouter>      
     );
   }
