@@ -2,7 +2,7 @@
 import React from 'react';
 
 
-// Here use class
+// Mockup for each photo to be rendered
 
 const Photo = props => {
     return (    

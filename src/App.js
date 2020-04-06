@@ -37,7 +37,7 @@ class App extends Component {
       this.performSearchForLakes();
 
   }
-
+// this performSearch is going to be used for our searchForm
   performSearch = ( query ) => {
 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
@@ -54,6 +54,8 @@ class App extends Component {
       console.log('error fetching', error);
     });
   }
+
+  // gallery for ccats
   performSearchForCats = () => {
 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=cats&per_page=24&format=json&nojsoncallback=1`)
@@ -69,7 +71,7 @@ class App extends Component {
       console.log('error fetching', error);
     });
   }
-
+// gallery for dogs
   performSearchForDogs = () => {
 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=dogs&per_page=24&format=json&nojsoncallback=1`)
@@ -85,7 +87,7 @@ class App extends Component {
       console.log('error fetching', error);
     });
   }
-
+// gallery for lakes
   performSearchForLakes = () => {
 
     fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=lakes&per_page=24&format=json&nojsoncallback=1`)

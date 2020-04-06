@@ -4,11 +4,12 @@ class SearchForm extends Component {
     state = {
         searchText: ''
     }
-
+// Here the state is changed according to the value entered by the user.
     onSearchChange = e => {
       this.setState({ searchText: e.target.value });
     }
 
+    // Here props.history.push is used while importing withRouter at the top of the page in order to match the search button query with the url
     handleSubmit = e => {
       e.preventDefault();
       this.props.onSearch(this.query.value);
